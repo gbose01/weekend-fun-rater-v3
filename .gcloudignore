@@ -1,0 +1,37 @@
+# .gcloudignore
+
+ # Default gcloudignore
+ .gcloudignore
+
+ # Virtual environment
+ venv/
+
+ # Python cache files
+ __pycache__/
+ *.pyc
+ *.pyo
+
+ # Environment variables file
+ .env
+
+ # Git
+ .git/
+ .gitignore
+
+ # macOS
+ .DS_Store
+
+ # Editor/IDE Specific
+ .idea/
+ .vscode/
+ *~
+ *.swp
+
+ # Jupyter Notebook
+ .ipynb_checkpoints
+
+ # NLTK Data (if stored locally, otherwise remove this line)
+ # nltk_data/ #Uncomment if you put your data here
+
+ # Compiled HTML files
+ *.html

@@ -1,0 +1,18 @@
+runtime: python311 # Or another supported Python version
+
+service_account: weekend-fun-rater-deployer@weekend-fun-rater-v2.google.com.iam.gserviceaccount.com # ADD THIS LINE, replace with *your* service account email
+
+env_variables:
+  GOOGLE_MAPS_API_KEY: "AIzaSyAUpEf8SCx9SHZf7ZDfyFxct5oGGux1fTc"
+  REDDIT_CLIENT_ID: "fyzjGjus5gnLJG-Q-D7lqQ"
+  REDDIT_CLIENT_SECRET: "q7kFSjwegRxhLkxf7yIU5ZcMc-jhXQ"
+  REDDIT_USER_AGENT: "WeekendFunRater v1.0 by u/pandapup101"
+  YELP_API_KEY: "ix4bD9GKVGGPcKmq6oews-X0oUwuv23RzlUdjVAYi6EoalJe1c6WToDqMiwUdl2H5qDYGd79PWaZJWOcCoRCd6LkxDoBwLxKl4CxVx1agzAIYGx5_wutYHaX8jCtZ3Yx"
+  OPENWEATHERMAP_API_KEY: "1931ed7a2b76a9353f279d84df56dd3f"
+  GEMINI_API_KEY: "AIzaSyD5JcrEU8oDlKqqfXJ79NlGY39dk-IT_iU"
+
+handlers:
+- url: /static
+  static_dir: static
+- url: /.*
+  script: auto
