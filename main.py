@@ -1,4 +1,4 @@
-# main.py (formerly app.py) - NO CHANGES NEEDED FROM PREVIOUS FULL app.py
+# main.py (formerly app.py)
 from flask import Flask, request, jsonify, render_template
 from utils.api_utils import get_place_details
 from utils.scraping_utils import scrape_reddit_reviews
@@ -93,5 +93,6 @@ def search_entity():
         print(f"ERROR in /search route: {type(e).__name__}: {e}")
         return jsonify({'error': 'An unexpected error occurred'}), 500
 
-if __name__ == '__main__': # REMOVE OR COMMENT OUT THIS BLOCK
-    app.run()
+# REMOVE OR COMMENT OUT THE if __name__ == '__main__': BLOCK
+# if __name__ == '__main__':
+#     app.run(debug=True)
