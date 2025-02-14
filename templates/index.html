@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weekend Plan Rater</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <h1><span class="icon">🎉</span> Weekend Plan Rater <span class="icon">🎉</span></h1>
+    </header>
+
+    <main>
+        <form id="searchForm">
+            <input type="text" id="queryInput" placeholder="Let Google rate your weekend plans!" required>
+            <button type="submit">Rate My Weekend!</button>
+        </form>
+
+        <div id="loadingIndicator" style="display: none; text-align: center; margin-top: 20px;">
+            <div class="spinner"></div> <p>Analyzing your weekend plans...</p>
+        </div>
+
+        <div id="results">
+        </div>
+    </main>
+
+    <footer>
+        <p>Python Flask app made with &hearts; by Gaurab</p>
+    </footer>
+
+    <script src="/static/js/script.js"></script>
+</body>
+</html>

@@ -17,8 +17,4 @@ venv/
 *.swp
 .ipynb_checkpoints
 # nltk_data/  # Uncomment if you use a local nltk_data folder
-*.html
-# Elastic Beanstalk Files
-.elasticbeanstalk/*
-!.elasticbeanstalk/*.cfg.yml
-!.elasticbeanstalk/*.global.yml
+
