@@ -1,3 +1,4 @@
+# main.py (formerly app.py) - NO CHANGES NEEDED FROM PREVIOUS FULL app.py
 from flask import Flask, request, jsonify, render_template
 from utils.api_utils import get_place_details
 from utils.scraping_utils import scrape_reddit_reviews
@@ -41,28 +42,13 @@ def search_entity():
 
                 all_reviews = []
                 google_reviews = place_info.get('reviews', [])
-                # --- Sentiment Analysis and Counting (Google) ---
-                google_sentiment_counts = {
-                    'Highly Positive': 0, 'Positive': 0, 'Neutral': 0, 'Negative': 0, 'Highly Negative': 0
-                }
                 for review in google_reviews:
-                    review_copy = review.copy()
-                    review_copy['sentiment'] = analyze_sentiment(review_copy['text'])
-                    print(f"DEBUG: Google Review Sentiment: {review_copy['text'][:50]}... - {review_copy['sentiment']}") # PRINT SENTIMENT
-                    google_sentiment_counts[review_copy['sentiment']] += 1  # Count
-                    all_reviews.append(review_copy)
-
-
-                # --- Sentiment Analysis and Counting (Reddit) ---
-                reddit_sentiment_counts = {
-                    'Highly Positive': 0, 'Positive': 0, 'Neutral': 0, 'Negative': 0, 'Highly Negative': 0
-                }
+                    all_reviews.append(review.copy())
                 for review in reddit_reviews:
-                    review_copy = review.copy()
-                    review_copy['sentiment'] = analyze_sentiment(review_copy['text'])
-                    print(f"DEBUG: Reddit Review Sentiment: {review_copy['text'][:50]}... - {review_copy['sentiment']}") #PRINT SENTIMENT
-                    reddit_sentiment_counts[review_copy['sentiment']] += 1 # Count
-                    all_reviews.append(review_copy)
+                    all_reviews.append(review.copy())
+
+                for review in all_reviews:
+                    review['sentiment'] = analyze_sentiment(review['text'])
 
                 positive_summary = summarize_reviews(all_reviews, "Positive")
                 negative_summary = summarize_reviews(all_reviews, "Negative")
@@ -73,10 +59,8 @@ def search_entity():
                 entities_data.append({
                     'name': place_info['name'],
                     'reviews': all_reviews,  # Keep all reviews for display
-                    'google_sentiment': google_sentiment_counts,  # Add sentiment counts
-                    'reddit_sentiment': reddit_sentiment_counts,  # Add sentiment counts
-                    'positive_summary': positive_summary,
-                    'negative_summary': negative_summary,
+                    'positive_summary': positive_summary,  # Add summary
+                    'negative_summary': negative_summary,  # Add summary
                     'weather': weather_data,
                     'latitude': latitude,
                     'longitude': longitude
@@ -84,6 +68,7 @@ def search_entity():
 
             else:
                 print(f"DEBUG: Could not retrieve place information for {entity}")
+                # Consider how to handle this.  Maybe skip this entity?
 
         travel_info = None
         if len(entities_data) >= 2:
@@ -108,3 +93,5 @@ def search_entity():
         print(f"ERROR in /search route: {type(e).__name__}: {e}")
         return jsonify({'error': 'An unexpected error occurred'}), 500
 
+if __name__ == '__main__': # REMOVE OR COMMENT OUT THIS BLOCK
+    app.run()

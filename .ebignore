@@ -1,0 +1,42 @@
+# .ebignore
+
+# Elastic Beanstalk Configuration (IMPORTANT)
+.elasticbeanstalk/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+*.egg
+/dist/
+/build/
+*.log
+
+# Virtual Environment
+venv/
+
+# Environment Variables
+.env
+
+# macOS
+.DS_Store
+
+# Editor/IDE Specific
+.idea/      # JetBrains IDEs (PyCharm, IntelliJ, etc.)
+.vscode/     # VS Code
+*~          # Backup files
+*.swp        # Vim swap files
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# NLTK Data (if stored locally, otherwise remove this line)
+# nltk_data/  # Uncomment if you have a local nltk_data folder
+
+# Compiled HTML files (Generally not needed)
+*.html
+
+# Database file (if using SQLite locally)
+reviews.db

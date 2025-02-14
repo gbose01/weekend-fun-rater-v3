@@ -1,0 +1,1 @@
+eb logs -i i-07ff37e24f899b3c1  # Replace with the actual instance ID
